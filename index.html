@@ -1,288 +1,1081 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <!-- SEO Essentials -->
-  <title>AI Zoo — The Living Exhibit of AI Agents</title>
-  <meta name="description" content="The world's first digital zoological park for AI agents. Observe their behaviors, understand their species, and experience the intelligence of tomorrow.">
-  <meta name="keywords" content="AI agents, digital zoo, AI behavior, machine learning, exhibit, AI automation">
-  <link rel="canonical" href="https://ai-zoo.vercel.app">
-  
-  <!-- Open Graph / Facebook -->
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://ai-zoo.vercel.app">
-  <meta property="og:title" content="AI Zoo — The Living Exhibit of AI Agents">
-  <meta property="og:description" content="Explore digital habitats and meet the agents that will shape our future.">
-  <meta property="og:image" content="assets/images/hero-bg.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Zoo — A Living Gallery of AI Agents</title>
+    
+    <!-- SEO & Metadata -->
+    <meta name="description" content="Visit the world's first digital zoo for AI agents. Observe, interact with, and understand different species of artificial intelligence in their natural habitats.">
+    <meta name="keywords" content="AI, Artificial Intelligence, AI Agents, AI Zoo, Machine Learning, Digital Exhibit">
+    <link rel="canonical" href="https://ai-zoo.vercel.app">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="AI Zoo — A Living Gallery of AI Agents">
+    <meta property="og:description" content="Explore digital habitats and meet the agents that will shape our future.">
+    <meta property="og:image" content="assets/og-image.png">
+    <meta property="og:url" content="https://ai-zoo.vercel.app">
+    <meta property="og:type" content="website">
 
-  <!-- Twitter -->
-  <meta property="twitter:card" content="summary_large_image">
-  <meta property="twitter:url" content="https://ai-zoo.vercel.app">
-  <meta property="twitter:title" content="AI Zoo — The Living Exhibit of AI Agents">
-  <meta property="twitter:description" content="Explore digital habitats and meet the agents that will shape our future.">
-  <meta property="twitter:image" content="assets/images/hero-bg.png">
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="AI Zoo — A Living Gallery of AI Agents">
+    <meta property="twitter:description" content="Step inside. Observe. Understand. These are not tools. These are species.">
+    <meta property="twitter:image" content="assets/og-image.png">
 
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="assets/images/favicon.png">
+    <!-- Favicon (SVG Data URI) -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='40' fill='%2300ff88' fill-opacity='0.2' stroke='%2300ff88' stroke-width='4'/><circle cx='50' cy='50' r='10' fill='%23e8a020'/></svg>">
 
-  <!-- Fonts & Icons -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300..700&display=swap" rel="stylesheet">
-  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
-  
-  <!-- Local Assets -->
-  <link rel="stylesheet" href="css/style.css">
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://api.fontshare.com/v2/css?f[]=satoshi@700,500,400,300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            /* Colors */
+            --bg-deep: #0a0a0f;
+            --surface-1: #111118;
+            --surface-2: #16161f;
+            --surface-3: #1e1e2a;
+            --text-primary: #e8e6df;
+            --text-muted: #7a7870;
+            --border: rgba(255, 255, 255, 0.08);
+            
+            /* Habitat Accents */
+            --accent-aviary: #e8a020;
+            --accent-reef: #00ff88;
+            --accent-plains: #4a9eff;
+            --accent-jungle: #e040fb;
+            --accent-canyon: #7eb8ff;
+            --accent-caverns: #ffb300;
+
+            /* Spacing & Misc */
+            --space-base: 4px;
+            --transition: all 400ms cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body {
+            background: var(--bg-deep);
+            color: var(--text-primary);
+            font-family: 'Satoshi', sans-serif;
+            overflow-x: hidden;
+            line-height: 1.5;
+        }
+
+        h1, h2, h3, .display-font {
+            font-family: 'Instrument Serif', serif;
+            font-weight: 400;
+        }
+
+        a { color: inherit; text-decoration: none; cursor: pointer; }
+        button { cursor: pointer; border: none; background: none; font-family: inherit; }
+
+        /* HEADER */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 72px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 40px;
+            background: rgba(10, 10, 15, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+        }
+
+        .logo-wrap {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-svg { width: 32px; height: 32px; }
+
+        .logo-text {
+            font-size: 24px;
+            letter-spacing: 0.05em;
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+        }
+
+        .nav a {
+            font-size: 14px;
+            font-weight: 500;
+            opacity: 0.6;
+            transition: var(--transition);
+        }
+
+        .nav a:hover { opacity: 1; }
+
+        .status-indicator {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--accent-reef);
+        }
+
+        .live-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: currentColor;
+            box-shadow: 0 0 10px currentColor;
+            animation: pulse-dot 2s infinite;
+        }
+
+        @keyframes pulse-dot {
+            0% { opacity: 1; }
+            50% { opacity: 0.4; }
+            100% { opacity: 1; }
+        }
+
+        /* TICKER */
+        .ticker {
+            position: fixed;
+            top: 72px;
+            left: 0;
+            width: 100%;
+            height: 32px;
+            background: var(--surface-1);
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            border-bottom: 1px solid var(--border);
+            z-index: 999;
+        }
+
+        .ticker-inner {
+            display: flex;
+            white-space: nowrap;
+            animation: ticker-move 40s linear infinite;
+        }
+
+        .ticker-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 0 24px;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+        }
+
+        .ticker-item span { color: var(--accent-reef); }
+
+        @keyframes ticker-move {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* HERO */
+        .hero {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding-top: 104px;
+            overflow: hidden;
+        }
+
+        #hero-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.4;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: clamp(48px, 8vw, 96px);
+            line-height: 0.95;
+            margin-bottom: 24px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: var(--text-muted);
+            margin-bottom: 40px;
+            max-width: 500px;
+            margin-inline: auto;
+        }
+
+        .cta-group {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+        }
+
+        .btn {
+            padding: 16px 32px;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: 700;
+            transition: var(--transition);
+        }
+
+        .btn-p {
+            background: var(--text-primary);
+            color: var(--bg-deep);
+        }
+
+        .btn-p:hover { transform: translateY(-4px); box-shadow: 0 10px 30px rgba(255, 255, 255, 0.15); }
+
+        .btn-s {
+            border: 1px solid var(--border);
+            color: var(--text-primary);
+        }
+
+        .btn-s:hover { border-color: var(--text-primary); background: rgba(255, 255, 255, 0.05); }
+
+        /* MAP SECTION */
+        .section { padding: 120px 40px; }
+        .section-header { text-align: center; margin-bottom: 80px; }
+        .section-header h2 { font-size: 56px; margin-bottom: 16px; }
+        .section-header p { color: var(--text-muted); font-size: 16px; }
+
+        .map-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            height: 600px;
+        }
+
+        #map-canvas { max-width: 100%; height: auto; }
+
+        /* SPECIES GRID */
+        .species-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 32px;
+            max-width: 1200px;
+            margin-inline: auto;
+        }
+
+        .species-card {
+            background: var(--surface-1);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .species-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--accent);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+        }
+
+        .card-img-wrap {
+            height: 240px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .card-img-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 1.2s ease;
+        }
+
+        .species-card:hover .card-img-wrap img {
+            transform: scale(1.1);
+        }
+
+        .card-body { padding: 32px; }
+
+        .card-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 16px;
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--accent);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .card-title { font-size: 32px; margin-bottom: 4px; }
+        .card-class { font-style: italic; font-size: 13px; color: var(--text-muted); margin-bottom: 24px; }
+
+        .stat-group { display: flex; flex-direction: column; gap: 12px; margin-bottom: 32px; }
+        .stat-row { display: flex; align-items: center; justify-content: space-between; font-size: 12px; font-weight: 500; }
+        .stat-bar-outer { width: 100%; height: 4px; background: rgba(255, 255, 255, 0.05); border-radius: 2px; margin-top: 4px; }
+        .stat-bar-inner { height: 100%; border-radius: 2px; width: 0; transition: width 1.5s ease-out; }
+
+        .trait-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 32px; }
+        .trait-tag { font-size: 10px; font-weight: 700; text-transform: uppercase; border: 1px solid var(--border); padding: 4px 8px; border-radius: 4px; opacity: 0.6; }
+
+        /* MODAL */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 10, 15, 0.95);
+            backdrop-filter: blur(20px);
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 500ms;
+        }
+
+        .modal-overlay.open { opacity: 1; pointer-events: all; }
+
+        .modal-body {
+            width: 90%;
+            max-width: 1200px;
+            height: 80vh;
+            background: var(--surface-1);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            overflow: hidden;
+            transform: translateY(100px);
+            transition: transform 600ms cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .modal-overlay.open .modal-body { transform: translateY(0); }
+
+        .modal-left { position: relative; background: #000; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+        .modal-left img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.6; }
+        #exhibit-canvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+
+        .modal-right { padding: 64px; overflow-y: auto; }
+
+        .log-box {
+            background: #000;
+            border-radius: 8px;
+            padding: 24px;
+            height: 200px;
+            overflow-y: auto;
+            font-family: monospace;
+            font-size: 13px;
+            color: #00ff88;
+            margin-bottom: 32px;
+            border: 1px solid rgba(0, 255, 136, 0.1);
+        }
+
+        .log-entry { margin-bottom: 4px; opacity: 0; animation: fade-in 300ms forwards; }
+        @keyframes fade-in { to { opacity: 1; } }
+
+        .feed-buttons { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 48px; }
+        .feed-btn {
+            background: var(--surface-2);
+            border: 1px solid var(--border);
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 12px;
+            color: var(--text-muted);
+            text-align: left;
+            transition: var(--transition);
+        }
+        .feed-btn:hover { background: var(--surface-3); border-color: var(--text-primary); color: var(--text-primary); }
+
+        .modal-close { position: absolute; top: 24px; right: 24px; font-size: 32px; color: #fff; z-index: 2001; }
+
+        /* STATS SECTION */
+        .stats-bar {
+            display: flex;
+            justify-content: space-around;
+            padding: 80px 40px;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            background: var(--surface-1);
+        }
+
+        .stat-item { text-align: center; }
+        .stat-num { font-size: 48px; font-weight: 700; color: var(--text-primary); }
+        .stat-label { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); }
+
+        /* ABOUT */
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 48px;
+            max-width: 1100px;
+            margin-inline: auto;
+        }
+
+        .about-card { text-align: center; }
+        .about-num { font-family: 'Instrument Serif', serif; font-size: 64px; color: var(--surface-3); margin-bottom: 24px; }
+        .about-title { font-size: 24px; margin-bottom: 16px; }
+        .about-text { color: var(--text-muted); line-height: 1.6; }
+
+        /* VISITORS */
+        .visitor-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            max-width: 1000px;
+            margin-inline: auto;
+        }
+
+        .visitor-card {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 32px 48px;
+            background: var(--surface-1);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            transition: var(--transition);
+        }
+
+        .visitor-card:hover { border-color: rgba(255, 255, 255, 0.2); background: var(--surface-2); }
+        .v-left h4 { font-size: 24px; margin-bottom: 4px; }
+        .v-left p { color: var(--text-muted); font-size: 15px; }
+
+        /* WAITLIST */
+        .waitlist-wrap {
+            max-width: 600px;
+            margin-inline: auto;
+            text-align: center;
+        }
+
+        .waitlist-form {
+            display: flex;
+            gap: 12px;
+            margin-top: 48px;
+        }
+
+        .waitlist-form input {
+            flex: 1;
+            background: var(--surface-1);
+            border: 1px solid var(--border);
+            padding: 16px 24px;
+            border-radius: 8px;
+            color: #fff;
+            outline: none;
+            transition: var(--transition);
+        }
+
+        .waitlist-form input:focus { border-color: var(--accent-reef); }
+
+        /* FOOTER */
+        .footer {
+            padding: 80px 40px;
+            border-top: 1px solid var(--border);
+            text-align: center;
+        }
+
+        .f-links { display: flex; justify-content: center; gap: 32px; margin: 32px 0; font-size: 13px; color: var(--text-muted); }
+        .f-links a:hover { color: #fff; }
+        .f-copy { font-size: 12px; color: var(--text-muted); opacity: 0.5; }
+
+        /* RESPONSIVE */
+        @media(max-width: 1024px) {
+            .modal-body { grid-template-columns: 1fr; height: 95vh; grid-template-rows: 250px 1fr; }
+            .modal-right { padding: 32px; }
+            .about-grid { grid-template-columns: 1fr; }
+            .visitor-card { flex-direction: column; text-align: center; gap: 16px; }
+        }
+
+        @media(max-width: 768px) {
+            .header { padding: 0 20px; }
+            .nav { display: none; }
+            .section { padding: 80px 20px; }
+            .section-header h2 { font-size: 40px; }
+            .stats-bar { flex-direction: column; gap: 40px; }
+            .waitlist-form { flex-direction: column; }
+            .hero h1 { font-size: 56px; }
+        }
+
+        /* UTILITIES */
+        .accent-reef { --accent: var(--accent-reef); }
+        .accent-aviary { --accent: var(--accent-aviary); }
+        .accent-plains { --accent: var(--accent-plains); }
+        .accent-jungle { --accent: var(--accent-jungle); }
+        .accent-canyon { --accent: var(--accent-canyon); }
+    </style>
 </head>
 <body>
 
-<header class="hdr">
-  <div class="logo">
-    <svg width="34" height="34" viewBox="0 0 34 34" fill="none" aria-label="AI Zoo logo">
-      <circle cx="17" cy="17" r="16" stroke="rgba(0,212,194,0.25)" stroke-width="1"/>
-      <circle cx="17" cy="17" r="10" stroke="rgba(0,212,194,0.45)" stroke-width="1"/>
-      <circle cx="17" cy="17" r="4.5" fill="rgba(0,212,194,0.85)"/>
-      <circle cx="17" cy="7" r="2" fill="rgba(0,212,194,0.6)" id="od1"/>
-      <circle cx="26" cy="22" r="2" fill="rgba(167,139,250,0.7)" id="od2"/>
-      <circle cx="8" cy="22" r="2" fill="rgba(240,180,41,0.7)" id="od3"/>
-    </svg>
-    <span>AI <em>Zoo</em></span>
-  </div>
-  <nav class="nav">
-    <a onclick="scrollTo('habitats')">Habitats</a>
-    <a onclick="scrollTo('species')">Species</a>
-    <a onclick="scrollTo('about')">About</a>
-  </nav>
-  <button class="btn-enter" onclick="scrollTo('species')">Enter the Park</button>
-</header>
-
-<section class="hero" id="home">
-  <div class="hero-bg">
-    <img src="assets/images/hero-bg.png" alt="AI Zoo park — glowing digital habitats" width="1920" height="1080">
-  </div>
-  <div class="hero-inner">
-    <h1 class="hero-h1">The <em>Living</em> AI Zoo</h1>
-    <p class="hero-sub">Step into the world's first digital zoological park for AI agents. Observe their instinct. Understand their nature. Experience the intelligence of tomorrow.</p>
-    <div class="hero-btns">
-      <button class="btn-p" onclick="scrollTo('species')">
-        <i data-lucide="map" style="width:18px;height:18px"></i>Explore the Park
-      </button>
-      <button class="btn-s" onclick="scrollTo('about')">
-        <i data-lucide="info" style="width:18px;height:18px"></i>What is this?
-      </button>
-    </div>
-  </div>
-  <div class="scroll-hint">
-    <i data-lucide="chevrons-down" style="width:16px;height:16px"></i>scroll
-  </div>
-</section>
-
-<div class="ticker">
-  <div class="ticker-inner" id="tkr">
-    <span class="t-item"><span class="t-dot" style="background:var(--primary)"></span>5 Active Species</span>
-    <span class="t-item"><span class="t-dot" style="background:var(--gold)"></span>6 Unique Habitats</span>
-    <span class="t-item"><span class="t-dot" style="background:var(--purple)"></span>The Cartographer &mdash; Knowledge Aviary</span>
-    <span class="t-item"><span class="t-dot" style="background:var(--gold)"></span>The Striker &mdash; Market Reef</span>
-    <span class="t-item"><span class="t-dot" style="background:var(--orange)"></span>The Machinist &mdash; Automation Plains</span>
-    <span class="t-item"><span class="t-dot" style="background:var(--primary)"></span>The Weaver &mdash; Browser Jungle</span>
-    <span class="t-item"><span class="t-dot" style="background:var(--blue)"></span>The Colony &mdash; Swarm Canyon</span>
-    <span class="t-item"><span class="t-dot" style="background:var(--green)"></span>All agents in safe sandbox</span>
-    <!-- Duplicate for infinite scroll -->
-    <span class="t-item"><span class="t-dot" style="background:var(--primary)"></span>5 Active Species</span>
-    <span class="t-item"><span class="t-dot" style="background:var(--gold)"></span>6 Unique Habitats</span>
-    <span class="t-item"><span class="t-dot" style="background:var(--purple)"></span>The Cartographer &mdash; Knowledge Aviary</span>
-    <span class="t-item"><span class="t-dot" style="background:var(--gold)"></span>The Striker &mdash; Market Reef</span>
-    <span class="t-item"><span class="t-dot" style="background:var(--orange)"></span>The Machinist &mdash; Automation Plains</span>
-    <span class="t-item"><span class="t-dot" style="background:var(--primary)"></span>The Weaver &mdash; Browser Jungle</span>
-    <span class="t-item"><span class="t-dot" style="background:var(--blue)"></span>The Colony &mdash; Swarm Canyon</span>
-    <span class="t-item"><span class="t-dot" style="background:var(--green)"></span>All agents in safe sandbox</span>
-  </div>
-</div>
-
-<section class="stats">
-  <div class="container">
-    <div class="stats-g">
-      <div class="rv"><div class="s-num" data-count="5">0</div><div class="s-label">Agent Species</div></div>
-      <div class="rv"><div class="s-num" data-count="6">0</div><div class="s-label">Unique Habitats</div></div>
-      <div class="rv"><div class="s-num" data-count="12">0</div><div class="s-label">Live Behaviors</div></div>
-      <div class="rv"><div class="s-num" data-count="100">0</div><div class="s-label">% Safe Sandbox</div></div>
-    </div>
-  </div>
-</section>
-
-<section class="sec" id="habitats">
-  <div class="container">
-    <div class="hab-intro">
-      <div>
-        <p class="sec-eye">The Park Map</p>
-        <h2 class="sec-h2 rv-up">Six <em>Habitats</em>,<br>Six Worlds</h2>
-        <p class="sec-desc rv-up">Every agent species has evolved to thrive in its own digital environment. Choose a habitat and step inside.</p>
-      </div>
-      <div class="rv" style="display:flex;align-items:center;justify-content:center">
-        <canvas id="map-canvas" width="280" height="280" style="border-radius:var(--radius-xl)"></canvas>
-      </div>
-    </div>
-    <div class="hab-grid">
-      <div class="hab-card hab-purple rv" onclick="filterSpecies('knowledge')">
-        <div class="h-icon" style="background:rgba(167,139,250,0.15);color:var(--purple)">🦅</div>
-        <div class="h-name" style="color:var(--purple)">Knowledge Aviary</div>
-        <div class="h-desc">Where research agents soar through vast information currents, mapping knowledge and returning with structured insights.</div>
-        <div class="h-count">1 species &middot; Research class</div>
-      </div>
-      <div class="hab-card hab-gold rv" onclick="filterSpecies('market')">
-        <div class="h-icon" style="background:rgba(240,180,41,0.15);color:var(--gold)">📈</div>
-        <div class="h-name" style="color:var(--gold)">Market Reef</div>
-        <div class="h-desc">High-velocity data currents and signal noise where trading agents hunt opportunities with precise instinct and speed.</div>
-        <div class="h-count">1 species &middot; Trading class</div>
-      </div>
-      <div class="hab-card hab-orange rv" onclick="filterSpecies('automation')">
-        <div class="h-icon" style="background:rgba(251,146,60,0.15);color:var(--orange)">⚙️</div>
-        <div class="h-name" style="color:var(--orange)">Automation Plains</div>
-        <div class="h-desc">A vast GUI landscape where control agents navigate desktops, fill forms, and execute precise multi-step workflows.</div>
-        <div class="h-count">1 species &middot; Control class</div>
-      </div>
-      <div class="hab-card hab-teal rv" onclick="filterSpecies('browser')">
-        <div class="h-icon" style="background:rgba(0,212,194,0.15);color:var(--primary)">🌐</div>
-        <div class="h-name" style="color:var(--primary)">Browser Jungle</div>
-        <div class="h-desc">Rich, chaotic ecosystem of tabs and forms where creative agents adapt and generate across the open web.</div>
-        <div class="h-count">1 species &middot; Creative class</div>
-      </div>
-      <div class="hab-card hab-blue rv" onclick="filterSpecies('swarm')">
-        <div class="h-icon" style="background:rgba(96,165,250,0.15);color:var(--blue)">🐝</div>
-        <div class="h-name" style="color:var(--blue)">Swarm Canyon</div>
-        <div class="h-desc">A deep networked canyon where agent colonies divide tasks, coordinate invisibly, and converge on collective solutions.</div>
-        <div class="h-count">1 species &middot; Swarm class</div>
-      </div>
-      <div class="hab-card hab-green rv" style="cursor: default; opacity: 0.8;">
-        <div class="h-icon" style="background:rgba(52,211,153,0.15);color:var(--green)">💻</div>
-        <div class="h-name" style="color:var(--green)">Terminal Caverns</div>
-        <div class="h-desc">Shell agents command processes, parse logs, and navigate raw code environments. Dark, precise, and powerful.</div>
-        <div class="h-count">Coming soon &middot; Shell class</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="sec spc-sec" id="species">
-  <div class="container">
-    <div style="margin-bottom:var(--space-10)">
-      <p class="sec-eye">Current Residents</p>
-      <h2 class="sec-h2 rv-up">Meet the <em>Species</em></h2>
-      <p class="sec-desc rv-up">Five agent species, each evolved for its habitat. Click any exhibit to observe live behavior.</p>
-    </div>
-    <div class="spc-grid" id="spc-grid"></div>
-  </div>
-</section>
-
-<div style="overflow:hidden;max-height:440px">
-  <img src="assets/images/species-exhibit.png" alt="AI agent species as bioluminescent digital creatures" width="1920" height="1080" loading="lazy" style="width:100%;object-fit:cover;opacity:0.45;filter:saturate(1.5)">
-</div>
-
-<section class="sec" id="about">
-  <div class="container-d" style="text-align:center">
-    <p class="sec-eye" style="justify-content:center;display:flex">Why This Exists</p>
-    <h2 class="sec-h2 rv-up">AI is powerful.<br>But hard to <em>see</em>.</h2>
-    <p class="sec-desc rv-up" style="margin:0 auto">Most people interact with AI through chat boxes that hide its behavioral nature. AI Zoo changes that — it makes agents observable.</p>
-    <div class="purpose-g">
-      <div class="p-card rv">
-        <div class="p-icon"><i data-lucide="eye" style="width:20px;height:20px"></i></div>
-        <div class="p-title">Observe</div>
-        <div class="p-desc">Watch agents act in real time — scanning, foraging, deciding, hesitating, failing, retrying. See behavior, not just output.</div>
-      </div>
-      <div class="p-card rv">
-        <div class="p-icon" style="background:rgba(167,139,250,0.12);border-color:rgba(167,139,250,0.2);color:var(--purple)"><i data-lucide="layers" style="width:20px;height:20px"></i></div>
-        <div class="p-title">Understand</div>
-        <div class="p-desc">Every species has a class, habitat, diet, strengths, and limits. Build real mental models — not hype, not fear.</div>
-      </div>
-      <div class="p-card rv">
-        <div class="p-icon" style="background:rgba(240,180,41,0.12);border-color:rgba(240,180,41,0.2);color:var(--gold)"><i data-lucide="zap" style="width:20px;height:20px"></i></div>
-        <div class="p-title">Interact</div>
-        <div class="p-desc">Feed agents tasks. Toggle stimuli. Watch how they react. Always safe. Always sandboxed. Always revealing.</div>
-      </div>
-      <div class="p-card rv">
-        <div class="p-icon" style="background:rgba(52,211,153,0.12);border-color:rgba(52,211,153,0.2);color:var(--green)"><i data-lucide="git-compare" style="width:20px;height:20px"></i></div>
-        <div class="p-title">Compare</div>
-        <div class="p-desc">Different species. Different speeds, caution, creativity, and risk profiles. See the real differences clearly.</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="cta-sec">
-  <div class="cta-glow"></div>
-  <div class="container-d" style="position:relative;z-index:1">
-    <p class="sec-eye" style="justify-content:center;display:flex">Open to All Visitors</p>
-    <h2 class="sec-h2 rv-up" style="text-align:center">The park is <em>open</em>.<br>Come explore.</h2>
-    <p class="sec-desc rv-up" style="margin:0 auto;text-align:center">No coding required. No expertise needed. Just curiosity — and a willingness to see AI differently.</p>
-    
-    <form id="waitlist-form" class="waitlist-form">
-      <input type="email" placeholder="Enter your email for the next tour..." required>
-      <button type="submit">Join Waitlist</button>
-    </form>
-
-    <div class="badges">
-      <span class="badge">🎓 Students & Educators</span>
-      <span class="badge">🔭 Curious Minds</span>
-      <span class="badge">🔨 Builders & Founders</span>
-      <span class="badge">🏢 Business & Policy</span>
-    </div>
-  </div>
-</section>
-
-<footer>
-  <div class="container-d">
-    <div class="f-logo">AI <em>Zoo</em></div>
-    <div class="f-links">
-      <a onclick="scrollTo('home')">Home</a>
-      <a onclick="scrollTo('habitats')">Habitats</a>
-      <a onclick="scrollTo('species')">Species</a>
-      <a onclick="scrollTo('about')">About</a>
-      <a href="contact.html">Contact</a>
-      <a href="privacy.html">Privacy</a>
-      <a href="terms.html">Terms</a>
-    </div>
-    <p class="f-copy">A living exhibit of AI agent intelligence. Built with curiosity. &copy; 2026 AI Zoo.</p>
-  </div>
-</footer>
-
-<!-- MODAL -->
-<div class="overlay" id="overlay" role="dialog" aria-modal="true" aria-labelledby="m-title">
-  <div class="modal" id="modal">
-    <div class="m-hdr">
-      <div>
-        <p id="m-eye" style="font-size:var(--text-xs);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:4px"></p>
-        <h2 id="m-title" style="font-family:var(--font-display);font-size:var(--text-xl)"></h2>
-      </div>
-      <button class="m-close" onclick="closeModal()" aria-label="Close exhibit">
-        <i data-lucide="x" style="width:20px;height:20px"></i>
-      </button>
-    </div>
-    <div class="m-body">
-      <div class="ex-grid">
-        <div>
-          <div class="arena">
-            <canvas id="ex-canvas" width="400" height="280"></canvas>
-          </div>
+    <!-- HEADER -->
+    <header class="header">
+        <div class="logo-wrap">
+            <svg class="logo-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="50" cy="50" r="45" stroke="var(--accent-reef)" stroke-width="2" stroke-dasharray="10 20" />
+                <circle cx="50" cy="50" r="25" stroke="var(--accent-aviary)" stroke-width="2" />
+                <circle cx="50" cy="50" r="8" fill="var(--accent-reef)" />
+            </svg>
+            <div class="logo-text h1">AI ZOO</div>
         </div>
-        <div>
-          <p style="font-size:var(--text-xs);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:var(--space-3)">Feed it a task</p>
-          <div class="task-list" id="task-list"></div>
-          <p style="font-size:var(--text-xs);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:var(--space-2);margin-top:var(--space-4)">Agent activity log</p>
-          <div class="log-box" id="log-box"></div>
-        </div>
-      </div>
-      <div class="keeper"><strong>🔬 Keeper's Note</strong><span id="keeper-txt"></span></div>
-      <div class="stat-bars">
-        <div class="sb"><label>Speed</label><div class="sb-track"><div id="sb-speed" class="sb-fill" style="background:var(--primary)"></div></div></div>
-        <div class="sb"><label>Caution</label><div class="sb-track"><div id="sb-caution" class="sb-fill" style="background:var(--gold)"></div></div></div>
-        <div class="sb"><label>Creativity</label><div class="sb-track"><div id="sb-creativity" class="sb-fill" style="background:var(--purple)"></div></div></div>
-      </div>
-    </div>
-  </div>
-</div>
+        <nav class="nav">
+            <a href="#habitats">Habitats</a>
+            <a href="#species">Species</a>
+            <a href="#about">About</a>
+            <button class="status-indicator">
+                <div class="live-dot"></div>
+                5 Species Active
+            </button>
+        </nav>
+        <button class="btn btn-s" onclick="document.getElementById('species').scrollIntoView({behavior:'smooth'})">Enter Park</button>
+    </header>
 
-<script src="js/script.js"></script>
+    <!-- TICKER -->
+    <div class="ticker">
+        <div class="ticker-inner">
+            <div class="ticker-item"><span>ACTIVE</span> The Cartographer — Knowledge Aviary</div>
+            <div class="ticker-item"><span>OBSERVING</span> The Striker — Market Reef</div>
+            <div class="ticker-item"><span>ACTIVE</span> The Machinist — Automation Plains</div>
+            <div class="ticker-item"><span>ACTIVE</span> The Weaver — Browser Jungle</div>
+            <div class="ticker-item"><span>OBSERVING</span> The Colony — Swarm Canyon</div>
+            <div class="ticker-item"><span>ACTIVE</span> The Cartographer — Knowledge Aviary</div>
+            <div class="ticker-item"><span>OBSERVING</span> The Striker — Market Reef</div>
+            <div class="ticker-item"><span>ACTIVE</span> The Machinist — Automation Plains</div>
+            <div class="ticker-item"><span>ACTIVE</span> The Weaver — Browser Jungle</div>
+            <div class="ticker-item"><span>OBSERVING</span> The Colony — Swarm Canyon</div>
+        </div>
+    </div>
+
+    <!-- HERO -->
+    <section class="hero">
+        <canvas id="hero-canvas"></canvas>
+        <div class="hero-content">
+            <h1>The World's First Zoo for AI Agents</h1>
+            <p>Step inside. Observe. Understand. These are not tools. These are species.</p>
+            <div class="cta-group">
+                <button class="btn btn-p" onclick="document.getElementById('species').scrollIntoView({behavior:'smooth'})">Enter the Park</button>
+                <button class="btn btn-s" onclick="document.getElementById('habitats').scrollIntoView({behavior:'smooth'})">View Species</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- HABITAT MAP -->
+    <section class="section" id="habitats">
+        <div class="section-header">
+            <h2>Six Habitats. Forty Behaviors. One Park.</h2>
+            <p>Animated habitat matrix for digital lifeforms.</p>
+        </div>
+        <div class="map-container">
+            <canvas id="map-canvas" width="600" height="600"></canvas>
+        </div>
+    </section>
+
+    <!-- STATS -->
+    <section class="stats-bar">
+        <div class="stat-item">
+            <div class="stat-num" data-target="5">0</div>
+            <div class="stat-label">Species</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-num" data-target="6">0</div>
+            <div class="stat-label">Habitats</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-num" data-target="12">0</div>
+            <div class="stat-label">Behaviors</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-num" data-target="100">0</div>
+            <div class="stat-label">% Safe Sandbox</div>
+        </div>
+    </section>
+
+    <!-- SPECIES GRID -->
+    <section class="section" id="species">
+        <div class="section-header">
+            <h2>Meet the Residents</h2>
+            <p>Click any exhibit to observe live behavior.</p>
+        </div>
+        <div class="species-grid" id="main-grid">
+            <!-- Driven by JS -->
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="section" id="about">
+        <div class="section-header">
+            <h2>Why AI Zoo exists</h2>
+        </div>
+        <div class="about-grid">
+            <div class="about-card">
+                <div class="about-num">01</div>
+                <h3 class="about-title">Exhibit</h3>
+                <p class="about-text">Watch agents behave as living systems, not invisible software.</p>
+            </div>
+            <div class="about-card">
+                <div class="about-num">02</div>
+                <h3 class="about-title">Educate</h3>
+                <p class="about-text">Understand their strengths, limits, and risks through experience.</p>
+            </div>
+            <div class="about-card">
+                <div class="about-num">03</div>
+                <h3 class="about-title">Interpret</h3>
+                <p class="about-text">Leave with a real mental model — not just a screenshot.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- USER TYPES -->
+    <section class="section">
+        <div class="section-header">
+            <h2>Who visits the park</h2>
+        </div>
+        <div class="visitor-grid">
+            <div class="visitor-card">
+                <div class="v-left">
+                    <h4>Curious Visitors</h4>
+                    <p>You've heard the headlines. Now see the reality.</p>
+                </div>
+                <button class="btn btn-s">Join Tour</button>
+            </div>
+            <div class="visitor-card">
+                <div class="v-left">
+                    <h4>Students & Educators</h4>
+                    <p>Living exhibits for AI literacy, ethics, and future-of-work.</p>
+                </div>
+                <button class="btn btn-s">Learn More</button>
+            </div>
+            <div class="visitor-card">
+                <div class="v-left">
+                    <h4>Builders & Founders</h4>
+                    <p>Understand what agents can and cannot do before you build.</p>
+                </div>
+                <button class="btn btn-s">Dev Sandbox</button>
+            </div>
+            <div class="visitor-card">
+                <div class="v-left">
+                    <h4>Companies & Researchers</h4>
+                    <p>Evaluate, compare, and contextualise agent capabilities.</p>
+                </div>
+                <button class="btn btn-s">Enterprise Access</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- WAITLIST -->
+    <section class="section">
+        <div class="waitlist-wrap">
+            <h2>The park is opening.</h2>
+            <p>Join the waitlist for early access, exhibit drops, and founder tickets.</p>
+            <form class="waitlist-form" onsubmit="event.preventDefault(); handleWaitlist(this)">
+                <input type="email" placeholder="Email Address" required>
+                <button type="submit" class="btn btn-p">Request Access</button>
+            </form>
+            <div id="waitlist-success" style="display:none; margin-top:24px; color:var(--accent-reef); font-weight:700;">
+                You're in. We'll notify you when the gates open.
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="logo-wrap" style="justify-content:center">
+            <svg class="logo-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="50" cy="50" r="45" stroke="var(--accent-reef)" stroke-width="2" stroke-dasharray="10 20" />
+                <circle cx="50" cy="50" r="8" fill="var(--accent-reef)" />
+            </svg>
+            <div class="logo-text h1">AI ZOO</div>
+        </div>
+        <p style="margin-top:12px; color:var(--text-muted)">A living gallery of digital intelligence</p>
+        <div class="f-links">
+            <a href="#about">About</a>
+            <a href="#species">Species</a>
+            <a href="#habitats">Habitats</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms</a>
+            <a href="#">Contact</a>
+        </div>
+        <div class="f-copy">© 2026 AI Zoo. All intelligence observed.</div>
+    </footer>
+
+    <!-- EXHIBIT MODAL -->
+    <div class="modal-overlay" id="modal-overlay">
+        <button class="modal-close" onclick="closeModal()">×</button>
+        <div class="modal-body">
+            <div class="modal-left">
+                <img id="modal-img" src="" alt="">
+                <canvas id="exhibit-canvas"></canvas>
+            </div>
+            <div class="modal-right">
+                <div class="card-badge" id="modal-habitat-badge"></div>
+                <h2 class="card-title" id="modal-name" style="font-size:48px"></h2>
+                <p class="card-class" id="modal-class"></p>
+                
+                <div class="log-box" id="log-box"></div>
+                
+                <p style="font-size:12px; font-weight:700; color:var(--text-muted); text-transform:uppercase; margin-bottom:12px">Feed it a task</p>
+                <div class="feed-buttons" id="modal-feed-buttons"></div>
+                
+                <div class="stat-group" id="modal-stats"></div>
+                
+                <div style="margin-top:40px">
+                    <p style="font-weight:700; margin-bottom:8px">Keeper's Note</p>
+                    <p id="modal-keeper" style="color:var(--text-muted); font-size:14px; line-height:1.6"></p>
+                </div>
+                
+                <div style="margin-top:24px">
+                    <p style="font-weight:700; margin-bottom:8px">Why this matters</p>
+                    <p style="color:var(--text-muted); font-size:14px; line-height:1.6">Observing these patterns helps build intuition for agentic failures, reasoning depth, and the impact of latent space on real-world workflows.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ROBOTS.TXT (Hidden) -->
+    <!-- 
+    User-agent: *
+    Allow: /
+    Sitemap: https://ai-zoo.vercel.app/sitemap.xml
+    -->
+
+    <script>
+        const SPECIES_DATA = [
+            {
+                id: 'cartographer',
+                name: 'The Cartographer',
+                class: 'Research Intelligence',
+                habitat: 'Knowledge Aviary',
+                accentClass: 'accent-aviary',
+                img: 'assets/cartographer.png',
+                desc: 'A slow, methodical hunter of knowledge. It circles vast information currents, mapping context.',
+                keeper: "The Cartographer maps the terrain of knowledge. It does not rush — it circles its subject, scanning from multiple angles before forming a synthesis. Patient and thorough, it rarely misses context but is slow to conclude. Powered by retrieval-augmented reasoning across large document sets.",
+                stats: { speed: 30, caution: 90, creativity: 55 },
+                traits: ['Foraging', 'Mapping', 'Systematic'],
+                diet: ["Give me a research topic", "Find sources on X", "Summarize this field", "Map historical context"],
+                logs: ["Initializing knowledge scan...", "Identifying source clusters...", "Connection formed: Node 12 → Node 4", "Synthesizing retrieved fragments...", "Validation phase starting..."]
+            },
+            {
+                id: 'striker',
+                name: 'The Striker',
+                class: 'Market Trading Intelligence',
+                habitat: 'Market Reef',
+                accentClass: 'accent-reef',
+                img: 'assets/striker.png',
+                desc: 'A high-speed predator of the data reef. Alert, opportunistic, risk-aware.',
+                keeper: "The Striker evolved in the volatile currents of Market Reef. It acts in milliseconds where others hesitate. Dangerous in calm conditions, lethal in high-volatility environments. It makes no moral decisions — only probabilistic ones. Handle with care. Requires strict risk controls.",
+                stats: { speed: 95, caution: 40, creativity: 20 },
+                traits: ['Fast', 'Alert', 'Risk-Aware'],
+                diet: ["Scan for breakout signals", "Execute momentum entry", "Evaluate risk/reward", "Detect volume spike"],
+                logs: ["Reef scan at 100hz...", "Signal detected: BTC/USD +1.2%", "Risk parameters verified.", "ORDER EXECUTED - 0.4ms", "Awaiting confirmation..."]
+            },
+            {
+                id: 'machinist',
+                name: 'The Machinist',
+                class: 'Desktop Automation Intelligence',
+                habitat: 'Automation Plains',
+                accentClass: 'accent-plains',
+                img: 'assets/machinist.png',
+                desc: 'The methodical tool-user of the digital world. Step by step, it navigates workspaces.',
+                keeper: "The Machinist does not improvise — it executes. Give it a clear task, clear tools, and clear permissions, and it will complete the workflow without fatigue. Its greatest weakness is ambiguity: unclear instructions cause it to stop and request clarification rather than guess.",
+                stats: { speed: 50, caution: 85, creativity: 25 },
+                traits: ['Precise', 'Step-by-Step', 'Tool-Using'],
+                diet: ["Open this file and extract data", "Automate this workflow", "Navigate to X and complete form", "Rename all PDF files"],
+                logs: ["Locating target interface...", "GUI scan complete. Input found.", "Executing click sequence (4, 12, 1)", "Data extracted to memory.", "Step 4 of 12 complete."]
+            },
+            {
+                id: 'weaver',
+                name: 'The Weaver',
+                class: 'Creative Generative Intelligence',
+                habitat: 'Browser Jungle',
+                accentClass: 'accent-jungle',
+                img: 'assets/weaver.png',
+                desc: 'A fluid, adaptive creator moving through the open web, weaving context into content.',
+                keeper: "The Weaver is the most generative and least predictable of the species. It produces abundantly, often surprisingly, and occasionally incorrectly. Its strength is lateral connection — linking things humans would never combine. Always verify its outputs before committing. Excellent first-draft intelligence.",
+                stats: { speed: 85, caution: 30, creativity: 98 },
+                traits: ['Adaptive', 'Generative', 'Playful'],
+                diet: ["Create a visual concept for X", "Write copy for this campaign", "Generate 5 ideas", "Rewrite in poetic tone"],
+                logs: ["Dreaming through latent space...", "Fragment found: 'Neon Sunlight'", "Weaving concepts together...", "Draft 1 emerging...", "Applying stylistic jitter..."]
+            },
+            {
+                id: 'colony',
+                name: 'The Colony',
+                class: 'Swarm / Distributed Intelligence',
+                habitat: 'Swarm Canyon',
+                accentClass: 'accent-canyon',
+                img: 'assets/colony.png',
+                desc: 'Not one agent — many. Converging rapidly on complex parallel tasks.',
+                keeper: "The Colony is not one mind — it is many, coordinated by shared goals and communication protocols. No single agent is intelligent; together they are formidable. Each micro-agent handles a sub-task; the colony synthesizes results. Used when speed through parallelism matters more than depth from a single pass.",
+                stats: { speed: 92, caution: 55, creativity: 65 },
+                traits: ['Parallel', 'Emergent', 'Coordinating'],
+                diet: ["Research this topic using 10 parallel agents", "Scan and classify this dataset", "Run multiple strategies", "Audit 1000 files in parallel"],
+                logs: ["Spawning 40 micro-agents...", "Task partitioned to swarms.", "A: processing sources...", "B: classifying results...", "Consensus reached. Merging data."]
+            }
+        ];
+
+        // RENDER GRID
+        const grid = document.getElementById('main-grid');
+        SPECIES_DATA.forEach(s => {
+            const card = document.createElement('div');
+            card.className = `species-card ${s.accentClass}`;
+            card.onclick = () => openExhibit(s);
+            card.innerHTML = `
+                <div class="card-img-wrap"><img src="${s.img}" alt="${s.name}"></div>
+                <div class="card-body">
+                    <div class="card-badge">${s.habitat}</div>
+                    <h3 class="card-title">${s.name}</h3>
+                    <p class="card-class">${s.class}</p>
+                    <div class="stat-group">
+                        ${renderStat('Speed', s.stats.speed)}
+                        ${renderStat('Caution', s.stats.caution)}
+                        ${renderStat('Creativity', s.stats.creativity)}
+                    </div>
+                    <div class="trait-tags">
+                        ${s.traits.map(t => `<div class="trait-tag">${t}</div>`).join('')}
+                    </div>
+                    <button class="btn btn-p" style="width:100%">Enter Exhibit</button>
+                </div>
+            `;
+            grid.appendChild(card);
+        });
+
+        function renderStat(label, val) {
+            return `
+                <div class="stat-item-inner" style="width:100%">
+                    <div class="stat-row"><span>${label}</span><span>${val}%</span></div>
+                    <div class="stat-bar-outer"><div class="stat-bar-inner" style="background:var(--accent); width: ${val}%"></div></div>
+                </div>
+            `;
+        }
+
+        // MODAL LOGIC
+        const overlay = document.getElementById('modal-overlay');
+        let logInterval;
+
+        function openExhibit(s) {
+            overlay.classList.add('open');
+            document.getElementById('modal-img').src = s.img;
+            document.getElementById('modal-name').textContent = s.name;
+            document.getElementById('modal-class').textContent = s.class;
+            document.getElementById('modal-habitat-badge').textContent = s.habitat;
+            document.getElementById('modal-habitat-badge').style.color = `var(--accent-${s.id})`;
+            document.getElementById('modal-keeper').textContent = s.keeper;
+            
+            const stats = document.getElementById('modal-stats');
+            stats.innerHTML = renderStat('Speed', s.stats.speed) + renderStat('Caution', s.stats.caution) + renderStat('Creativity', s.stats.creativity);
+            
+            const feed = document.getElementById('modal-feed-buttons');
+            feed.innerHTML = s.diet.map(d => `<button class="feed-btn" onclick="feedTask('${d}', ['${s.logs.join("','")}'])">${d}</button>`).join('');
+            
+            startExhibitAnimation(s);
+            feedTask("Observing Species...", s.logs);
+        }
+
+        function closeModal() {
+            overlay.classList.remove('open');
+            clearInterval(logInterval);
+        }
+
+        function feedTask(task, logs) {
+            const box = document.getElementById('log-box');
+            box.innerHTML = `<div class="log-entry" style="color:#fff">> TASK: ${task}</div>`;
+            let i = 0;
+            clearInterval(logInterval);
+            logInterval = setInterval(() => {
+                if (i < logs.length) {
+                    box.innerHTML += `<div class="log-entry">> ${logs[i]}</div>`;
+                    box.scrollTop = box.scrollHeight;
+                    i++;
+                } else {
+                    box.innerHTML += `<div class="log-entry" style="color:#fff">> Complete.</div>`;
+                    clearInterval(logInterval);
+                }
+            }, 800);
+        }
+
+        // CANVASES
+        function initHeroCanvas() {
+            const canvas = document.getElementById('hero-canvas');
+            const ctx = canvas.getContext('2d');
+            let w, h, particles = [];
+
+            function resize() {
+                w = canvas.width = window.innerWidth;
+                h = canvas.height = window.innerHeight;
+            }
+            window.onresize = resize;
+            resize();
+
+            for(let i=0; i<60; i++) {
+                particles.push({
+                    x: Math.random() * w,
+                    y: Math.random() * h,
+                    vx: (Math.random() - 0.5) * 0.5,
+                    vy: (Math.random() - 0.5) * 0.5,
+                    r: Math.random() * 2
+                });
+            }
+
+            function draw() {
+                ctx.clearRect(0,0,w,h);
+                ctx.fillStyle = "rgba(126, 184, 255, 0.4)";
+                ctx.strokeStyle = "rgba(126, 184, 255, 0.05)";
+                particles.forEach(p => {
+                    p.x += p.vx; p.y += p.vy;
+                    if(p.x<0 || p.x>w) p.vx *= -1;
+                    if(p.y<0 || p.y>h) p.vy *= -1;
+                    ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI*2); ctx.fill();
+                    // Lines
+                    particles.forEach(p2 => {
+                        let d = Math.hypot(p.x-p2.x, p.y-p2.y);
+                        if(d < 150) {
+                            ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(p2.x, p2.y); ctx.stroke();
+                        }
+                    });
+                });
+                requestAnimationFrame(draw);
+            }
+            draw();
+        }
+
+        function initMapCanvas() {
+            const canvas = document.getElementById('map-canvas');
+            const ctx = canvas.getContext('2d');
+            const cx = 300, cy = 300;
+            const habitats = [
+                { name: 'Aviary', color: '#e8a020', angle: 0 },
+                { name: 'Reef', color: '#00ff88', angle: Math.PI/3 },
+                { name: 'Plains', color: '#4a9eff', angle: Math.PI*2/3 },
+                { name: 'Jungle', color: '#e040fb', angle: Math.PI },
+                { name: 'Canyon', color: '#7eb8ff', angle: Math.PI*4/3 },
+                { name: 'Caverns', color: '#ffb300', angle: Math.PI*5/3 }
+            ];
+
+            function drawMap() {
+                ctx.clearRect(0,0,600,600);
+                const time = Date.now() * 0.0005;
+                
+                // Central Hub
+                ctx.beginPath(); ctx.arc(cx, cy, 40, 0, Math.PI*2); ctx.strokeStyle = "#fff"; ctx.lineWidth=1; ctx.stroke();
+                ctx.fillStyle = "rgba(0, 255, 136, 0.1)"; ctx.fill();
+                
+                habitats.forEach(h => {
+                    const ang = h.angle + time;
+                    const x = cx + Math.cos(ang) * 180;
+                    const y = cy + Math.sin(ang) * 180;
+                    
+                    ctx.beginPath(); ctx.moveTo(cx, cy); ctx.lineTo(x, y); ctx.strokeStyle = "rgba(255,255,255,0.1)"; ctx.stroke();
+                    ctx.beginPath(); ctx.arc(x, y, 15, 0, Math.PI*2); ctx.fillStyle = h.color; ctx.fill();
+                    ctx.fillStyle = h.color; ctx.font = "bold 10px Satoshi"; ctx.fillText(h.name, x + 20, y + 5);
+                });
+                requestAnimationFrame(drawMap);
+            }
+            drawMap();
+        }
+
+        function startExhibitAnimation(s) {
+            const cv = document.getElementById('exhibit-canvas');
+            const ctx = cv.getContext('2d');
+            cv.width = cv.clientWidth; cv.height = cv.clientHeight;
+            let time = 0;
+            
+            function ani() {
+                ctx.clearRect(0,0,cv.width,cv.height);
+                ctx.strokeStyle = `var(--accent-${s.id})`;
+                ctx.lineWidth = 2;
+                time += 0.02;
+                
+                if(s.id === 'cartographer') {
+                    // Scanning pulse
+                    let r = (time * 50) % 200;
+                    ctx.beginPath(); ctx.arc(cv.width/2, cv.height/2, r, 0, Math.PI*2); 
+                    ctx.strokeStyle = `rgba(232, 160, 32, ${1 - r/200})`; ctx.stroke();
+                } else if(s.id === 'striker') {
+                    // Jittery lines
+                    ctx.beginPath(); ctx.moveTo(0, cv.height/2 + Math.sin(time*10)*50);
+                    for(let x=0; x<cv.width; x+=10) {
+                        ctx.lineTo(x, cv.height/2 + Math.sin(time*10 + x*0.05)*40);
+                    }
+                    ctx.stroke();
+                } else if(s.id === 'weaver') {
+                    // Fluid fractal
+                    ctx.beginPath();
+                    for(let i=0; i<8; i++) {
+                        let ang = i * Math.PI/4 + time;
+                        ctx.moveTo(cv.width/2, cv.height/2);
+                        ctx.lineTo(cv.width/2 + Math.cos(ang)*80*Math.sin(time), cv.height/2 + Math.sin(ang)*80);
+                    }
+                    ctx.stroke();
+                } else if(s.id === 'colony') {
+                    // Swarm particles
+                    for(let i=0; i<30; i++) {
+                        let x = cv.width/2 + Math.cos(time + i)*60;
+                        let y = cv.height/2 + Math.sin(time*0.5 + i)*40;
+                        ctx.beginPath(); ctx.arc(x, y, 2, 0, Math.PI*2); ctx.fillStyle = "#7eb8ff"; ctx.fill();
+                    }
+                }
+                if(overlay.classList.contains('open')) requestAnimationFrame(ani);
+            }
+            ani();
+        }
+
+        // UTILITIES
+        function animateStats() {
+            const stats = document.querySelectorAll('.stat-num');
+            stats.forEach(s => {
+                const target = +s.dataset.target;
+                const count = +s.innerText;
+                const speed = 200;
+                const inc = target / speed;
+                if(count < target) {
+                    s.innerText = Math.ceil(count + inc);
+                    setTimeout(animateStats, 1);
+                } else {
+                    s.innerText = target;
+                }
+            });
+        }
+
+        function handleWaitlist(form) {
+            console.log("Waitlist Access Request:", form.querySelector('input').value);
+            form.style.display = 'none';
+            document.getElementById('waitlist-success').style.display = 'block';
+        }
+
+        window.onload = () => {
+            initHeroCanvas();
+            initMapCanvas();
+            // Trigger stats animation on scroll
+            const observer = new IntersectionObserver((entries) => {
+                if(entries[0].isIntersecting) animateStats();
+            }, { threshold: 0.5 });
+            observer.observe(document.querySelector('.stats-bar'));
+        };
+    </script>
 </body>
 </html>

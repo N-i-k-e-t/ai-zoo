@@ -1,7 +1,0 @@
-# Local development
-.DS_Store
-node_modules
-.vercel
-
-# Assets that shouldn't be tracked if large
-# assets/images/large-video.mp4

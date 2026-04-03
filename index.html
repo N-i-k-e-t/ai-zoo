@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- SEO Essentials -->
+  <title>AI Zoo — The Living Exhibit of AI Agents</title>
+  <meta name="description" content="The world's first digital zoological park for AI agents. Observe their behaviors, understand their species, and experience the intelligence of tomorrow.">
+  <meta name="keywords" content="AI agents, digital zoo, AI behavior, machine learning, exhibit, AI automation">
+  <link rel="canonical" href="https://ai-zoo.vercel.app">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ai-zoo.vercel.app">
+  <meta property="og:title" content="AI Zoo — The Living Exhibit of AI Agents">
+  <meta property="og:description" content="Explore digital habitats and meet the agents that will shape our future.">
+  <meta property="og:image" content="assets/images/hero-bg.png">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://ai-zoo.vercel.app">
+  <meta property="twitter:title" content="AI Zoo — The Living Exhibit of AI Agents">
+  <meta property="twitter:description" content="Explore digital habitats and meet the agents that will shape our future.">
+  <meta property="twitter:image" content="assets/images/hero-bg.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="assets/images/favicon.png">
+
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300..700&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+  
+  <!-- Local Assets -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="hdr">
+  <div class="logo">
+    <svg width="34" height="34" viewBox="0 0 34 34" fill="none" aria-label="AI Zoo logo">
+      <circle cx="17" cy="17" r="16" stroke="rgba(0,212,194,0.25)" stroke-width="1"/>
+      <circle cx="17" cy="17" r="10" stroke="rgba(0,212,194,0.45)" stroke-width="1"/>
+      <circle cx="17" cy="17" r="4.5" fill="rgba(0,212,194,0.85)"/>
+      <circle cx="17" cy="7" r="2" fill="rgba(0,212,194,0.6)" id="od1"/>
+      <circle cx="26" cy="22" r="2" fill="rgba(167,139,250,0.7)" id="od2"/>
+      <circle cx="8" cy="22" r="2" fill="rgba(240,180,41,0.7)" id="od3"/>
+    </svg>
+    <span>AI <em>Zoo</em></span>
+  </div>
+  <nav class="nav">
+    <a onclick="scrollTo('habitats')">Habitats</a>
+    <a onclick="scrollTo('species')">Species</a>
+    <a onclick="scrollTo('about')">About</a>
+  </nav>
+  <button class="btn-enter" onclick="scrollTo('species')">Enter the Park</button>
+</header>
+
+<section class="hero" id="home">
+  <div class="hero-bg">
+    <img src="assets/images/hero-bg.png" alt="AI Zoo park — glowing digital habitats" width="1920" height="1080">
+  </div>
+  <div class="hero-inner">
+    <div class="eyebrow"><span class="live-dot"></span>Now Open &bull; Digital Exhibit 2026</div>
+    <h1 class="hero-h1">The <em>Living</em><br>AI Zoo</h1>
+    <p class="hero-sub">The world's first digital zoological park for AI agents. Observe their behaviors. Understand their species. Experience the intelligence of tomorrow.</p>
+    <div class="hero-btns">
+      <button class="btn-p" onclick="scrollTo('species')">
+        <i data-lucide="map" style="width:18px;height:18px"></i>Explore the Park
+      </button>
+      <button class="btn-s" onclick="scrollTo('about')">
+        <i data-lucide="info" style="width:18px;height:18px"></i>What is this?
+      </button>
+    </div>
+  </div>
+  <div class="scroll-hint">
+    <i data-lucide="chevrons-down" style="width:16px;height:16px"></i>scroll
+  </div>
+</section>
+
+<div class="ticker">
+  <div class="ticker-inner" id="tkr">
+    <span class="t-item"><span class="t-dot" style="background:var(--primary)"></span>5 Active Species</span>
+    <span class="t-item"><span class="t-dot" style="background:var(--gold)"></span>6 Unique Habitats</span>
+    <span class="t-item"><span class="t-dot" style="background:var(--purple)"></span>The Cartographer &mdash; Knowledge Aviary</span>
+    <span class="t-item"><span class="t-dot" style="background:var(--gold)"></span>The Striker &mdash; Market Reef</span>
+    <span class="t-item"><span class="t-dot" style="background:var(--orange)"></span>The Machinist &mdash; Automation Plains</span>
+    <span class="t-item"><span class="t-dot" style="background:var(--primary)"></span>The Weaver &mdash; Browser Jungle</span>
+    <span class="t-item"><span class="t-dot" style="background:var(--blue)"></span>The Colony &mdash; Swarm Canyon</span>
+    <span class="t-item"><span class="t-dot" style="background:var(--green)"></span>All agents in safe sandbox</span>
+    <!-- Duplicate for infinite scroll -->
+    <span class="t-item"><span class="t-dot" style="background:var(--primary)"></span>5 Active Species</span>
+    <span class="t-item"><span class="t-dot" style="background:var(--gold)"></span>6 Unique Habitats</span>
+    <span class="t-item"><span class="t-dot" style="background:var(--purple)"></span>The Cartographer &mdash; Knowledge Aviary</span>
+    <span class="t-item"><span class="t-dot" style="background:var(--gold)"></span>The Striker &mdash; Market Reef</span>
+    <span class="t-item"><span class="t-dot" style="background:var(--orange)"></span>The Machinist &mdash; Automation Plains</span>
+    <span class="t-item"><span class="t-dot" style="background:var(--primary)"></span>The Weaver &mdash; Browser Jungle</span>
+    <span class="t-item"><span class="t-dot" style="background:var(--blue)"></span>The Colony &mdash; Swarm Canyon</span>
+    <span class="t-item"><span class="t-dot" style="background:var(--green)"></span>All agents in safe sandbox</span>
+  </div>
+</div>
+
+<section class="stats">
+  <div class="container">
+    <div class="stats-g">
+      <div class="rv"><div class="s-num" data-count="5">0</div><div class="s-label">Agent Species</div></div>
+      <div class="rv"><div class="s-num" data-count="6">0</div><div class="s-label">Unique Habitats</div></div>
+      <div class="rv"><div class="s-num" data-count="12">0</div><div class="s-label">Live Behaviors</div></div>
+      <div class="rv"><div class="s-num" data-count="100">0</div><div class="s-label">% Safe Sandbox</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="habitats">
+  <div class="container">
+    <div class="hab-intro">
+      <div>
+        <p class="sec-eye">The Park Map</p>
+        <h2 class="sec-h2 rv-up">Six <em>Habitats</em>,<br>Six Worlds</h2>
+        <p class="sec-desc rv-up">Every agent species has evolved to thrive in its own digital environment. Choose a habitat and step inside.</p>
+      </div>
+      <div class="rv" style="display:flex;align-items:center;justify-content:center">
+        <canvas id="map-canvas" width="280" height="280" style="border-radius:var(--radius-xl)"></canvas>
+      </div>
+    </div>
+    <div class="hab-grid">
+      <div class="hab-card hab-purple rv" onclick="filterSpecies('knowledge')">
+        <div class="h-icon" style="background:rgba(167,139,250,0.15);color:var(--purple)">🦅</div>
+        <div class="h-name" style="color:var(--purple)">Knowledge Aviary</div>
+        <div class="h-desc">Where research agents soar through vast information currents, mapping knowledge and returning with structured insights.</div>
+        <div class="h-count">1 species &middot; Research class</div>
+      </div>
+      <div class="hab-card hab-gold rv" onclick="filterSpecies('market')">
+        <div class="h-icon" style="background:rgba(240,180,41,0.15);color:var(--gold)">📈</div>
+        <div class="h-name" style="color:var(--gold)">Market Reef</div>
+        <div class="h-desc">High-velocity data currents and signal noise where trading agents hunt opportunities with precise instinct and speed.</div>
+        <div class="h-count">1 species &middot; Trading class</div>
+      </div>
+      <div class="hab-card hab-orange rv" onclick="filterSpecies('automation')">
+        <div class="h-icon" style="background:rgba(251,146,60,0.15);color:var(--orange)">⚙️</div>
+        <div class="h-name" style="color:var(--orange)">Automation Plains</div>
+        <div class="h-desc">A vast GUI landscape where control agents navigate desktops, fill forms, and execute precise multi-step workflows.</div>
+        <div class="h-count">1 species &middot; Control class</div>
+      </div>
+      <div class="hab-card hab-teal rv" onclick="filterSpecies('browser')">
+        <div class="h-icon" style="background:rgba(0,212,194,0.15);color:var(--primary)">🌐</div>
+        <div class="h-name" style="color:var(--primary)">Browser Jungle</div>
+        <div class="h-desc">Rich, chaotic ecosystem of tabs and forms where creative agents adapt and generate across the open web.</div>
+        <div class="h-count">1 species &middot; Creative class</div>
+      </div>
+      <div class="hab-card hab-blue rv" onclick="filterSpecies('swarm')">
+        <div class="h-icon" style="background:rgba(96,165,250,0.15);color:var(--blue)">🐝</div>
+        <div class="h-name" style="color:var(--blue)">Swarm Canyon</div>
+        <div class="h-desc">A deep networked canyon where agent colonies divide tasks, coordinate invisibly, and converge on collective solutions.</div>
+        <div class="h-count">1 species &middot; Swarm class</div>
+      </div>
+      <div class="hab-card hab-green rv" style="cursor: default; opacity: 0.8;">
+        <div class="h-icon" style="background:rgba(52,211,153,0.15);color:var(--green)">💻</div>
+        <div class="h-name" style="color:var(--green)">Terminal Caverns</div>
+        <div class="h-desc">Shell agents command processes, parse logs, and navigate raw code environments. Dark, precise, and powerful.</div>
+        <div class="h-count">Coming soon &middot; Shell class</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec spc-sec" id="species">
+  <div class="container">
+    <div style="margin-bottom:var(--space-10)">
+      <p class="sec-eye">Current Residents</p>
+      <h2 class="sec-h2 rv-up">Meet the <em>Species</em></h2>
+      <p class="sec-desc rv-up">Five agent species, each evolved for its habitat. Click any exhibit to observe live behavior.</p>
+    </div>
+    <div class="spc-grid" id="spc-grid"></div>
+  </div>
+</section>
+
+<div style="overflow:hidden;max-height:440px">
+  <img src="assets/images/species-exhibit.png" alt="AI agent species as bioluminescent digital creatures" width="1920" height="1080" loading="lazy" style="width:100%;object-fit:cover;opacity:0.45;filter:saturate(1.5)">
+</div>
+
+<section class="sec" id="about">
+  <div class="container-d" style="text-align:center">
+    <p class="sec-eye" style="justify-content:center;display:flex">Why This Exists</p>
+    <h2 class="sec-h2 rv-up">AI is powerful.<br>But hard to <em>see</em>.</h2>
+    <p class="sec-desc rv-up" style="margin:0 auto">Most people interact with AI through chat boxes that hide its behavioral nature. AI Zoo changes that — it makes agents observable.</p>
+    <div class="purpose-g">
+      <div class="p-card rv">
+        <div class="p-icon"><i data-lucide="eye" style="width:20px;height:20px"></i></div>
+        <div class="p-title">Observe</div>
+        <div class="p-desc">Watch agents act in real time — scanning, foraging, deciding, hesitating, failing, retrying. See behavior, not just output.</div>
+      </div>
+      <div class="p-card rv">
+        <div class="p-icon" style="background:rgba(167,139,250,0.12);border-color:rgba(167,139,250,0.2);color:var(--purple)"><i data-lucide="layers" style="width:20px;height:20px"></i></div>
+        <div class="p-title">Understand</div>
+        <div class="p-desc">Every species has a class, habitat, diet, strengths, and limits. Build real mental models — not hype, not fear.</div>
+      </div>
+      <div class="p-card rv">
+        <div class="p-icon" style="background:rgba(240,180,41,0.12);border-color:rgba(240,180,41,0.2);color:var(--gold)"><i data-lucide="zap" style="width:20px;height:20px"></i></div>
+        <div class="p-title">Interact</div>
+        <div class="p-desc">Feed agents tasks. Toggle stimuli. Watch how they react. Always safe. Always sandboxed. Always revealing.</div>
+      </div>
+      <div class="p-card rv">
+        <div class="p-icon" style="background:rgba(52,211,153,0.12);border-color:rgba(52,211,153,0.2);color:var(--green)"><i data-lucide="git-compare" style="width:20px;height:20px"></i></div>
+        <div class="p-title">Compare</div>
+        <div class="p-desc">Different species. Different speeds, caution, creativity, and risk profiles. See the real differences clearly.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-sec">
+  <div class="cta-glow"></div>
+  <div class="container-d" style="position:relative;z-index:1">
+    <p class="sec-eye" style="justify-content:center;display:flex">Open to All Visitors</p>
+    <h2 class="sec-h2 rv-up" style="text-align:center">The park is <em>open</em>.<br>Come explore.</h2>
+    <p class="sec-desc rv-up" style="margin:0 auto;text-align:center">No coding required. No expertise needed. Just curiosity — and a willingness to see AI differently.</p>
+    
+    <form id="waitlist-form" class="waitlist-form">
+      <input type="email" placeholder="Enter your email for the next tour..." required>
+      <button type="submit">Join Waitlist</button>
+    </form>
+
+    <div class="badges">
+      <span class="badge">🎓 Students & Educators</span>
+      <span class="badge">🔭 Curious Minds</span>
+      <span class="badge">🔨 Builders & Founders</span>
+      <span class="badge">🏢 Business & Policy</span>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container-d">
+    <div class="f-logo">AI <em>Zoo</em></div>
+    <div class="f-links">
+      <a onclick="scrollTo('home')">Home</a>
+      <a onclick="scrollTo('habitats')">Habitats</a>
+      <a onclick="scrollTo('species')">Species</a>
+      <a onclick="scrollTo('about')">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="terms.html">Terms</a>
+    </div>
+    <p class="f-copy">A living exhibit of AI agent intelligence. Built with curiosity. &copy; 2026 AI Zoo.</p>
+  </div>
+</footer>
+
+<!-- MODAL -->
+<div class="overlay" id="overlay" role="dialog" aria-modal="true" aria-labelledby="m-title">
+  <div class="modal" id="modal">
+    <div class="m-hdr">
+      <div>
+        <p id="m-eye" style="font-size:var(--text-xs);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:4px"></p>
+        <h2 id="m-title" style="font-family:var(--font-display);font-size:var(--text-xl)"></h2>
+      </div>
+      <button class="m-close" onclick="closeModal()" aria-label="Close exhibit">
+        <i data-lucide="x" style="width:20px;height:20px"></i>
+      </button>
+    </div>
+    <div class="m-body">
+      <div class="ex-grid">
+        <div>
+          <div class="arena">
+            <canvas id="ex-canvas" width="400" height="280"></canvas>
+          </div>
+        </div>
+        <div>
+          <p style="font-size:var(--text-xs);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:var(--space-3)">Feed it a task</p>
+          <div class="task-list" id="task-list"></div>
+          <p style="font-size:var(--text-xs);text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:var(--space-2);margin-top:var(--space-4)">Agent activity log</p>
+          <div class="log-box" id="log-box"></div>
+        </div>
+      </div>
+      <div class="keeper"><strong>🔬 Keeper's Note</strong><span id="keeper-txt"></span></div>
+      <div class="stat-bars">
+        <div class="sb"><label>Speed</label><div class="sb-track"><div id="sb-speed" class="sb-fill" style="background:var(--primary)"></div></div></div>
+        <div class="sb"><label>Caution</label><div class="sb-track"><div id="sb-caution" class="sb-fill" style="background:var(--gold)"></div></div></div>
+        <div class="sb"><label>Creativity</label><div class="sb-track"><div id="sb-creativity" class="sb-fill" style="background:var(--purple)"></div></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="js/script.js"></script>
+</body>
+</html>
